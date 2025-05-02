@@ -72,7 +72,7 @@ car_data, _ = load_car_data("euro_cars_only.json")
 index = faiss.read_index("euro_cars_faiss_index_new.idx")
 
 # Search function
-def search_similar_cars(query, top_k=100):
+def search_similar_cars(query, top_k=50):
     query_embedding = np.array([get_embedding(query)], dtype=np.float32)
     distances, indices = index.search(query_embedding, top_k)
     return [car_data[i] for i in indices[0]]
